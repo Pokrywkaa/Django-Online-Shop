@@ -1,4 +1,3 @@
-from unicodedata import category
 from django.shortcuts import get_object_or_404
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -23,5 +22,5 @@ class ProductDetail(APIView):
                                     id=id,
                                     slug=slug,
                                     available=True)
-        serializer = ProductSerializer(product)
+        serializer = ProductSerializer(product, context={"request":request})
         return Response(serializer.data)
