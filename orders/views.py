@@ -48,6 +48,7 @@ def order_create(request):
                                         quantity=item['quantity'])
             cart.clear()
             order_created.delay(order.id)
+            request.session['coupon_id'] = None
             request.session['order_id'] = order.id
             return redirect(reverse('payment:process'))
     else:
