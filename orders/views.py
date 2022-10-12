@@ -7,6 +7,7 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 
+from shop.recommender import Recommender
 from .models import OrderItem, Order
 from .forms import OrderCreateForm
 from cart.cart import Cart
@@ -41,11 +42,15 @@ def order_create(request):
                 order.coupon = cart.coupon
                 order.discount = cart.coupon.discount
             order.save()
+            products = []
             for item in cart:
                 OrderItem.objects.create(order=order,
                                         product=item['product'],
                                         price=item['price'],
                                         quantity=item['quantity'])
+                products.append(item['product'])
+            r = Recommender()
+            r.products_bought(products)
             cart.clear()
             order_created.delay(order.id)
             request.session['coupon_id'] = None
