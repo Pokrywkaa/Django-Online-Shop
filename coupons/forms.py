@@ -1,5 +1,7 @@
 from django import forms
 
 class CouponApplyForm(forms.Form):
-    code = forms.CharField()
+    code = forms.CharField(widget=forms.TextInput(attrs={
+        'autocomplete':'off'
+    }))
     

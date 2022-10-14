@@ -26,7 +26,7 @@ def product_detail(request, id, slug):
     cart_product_form = CartAddProductForm()
     
     r = Recommender()
-    recommended_products = r.suggest_products_for([product], 4)
+    recommended_products = r.suggest_products_for([product], 3)
     
     print(recommended_products)
     

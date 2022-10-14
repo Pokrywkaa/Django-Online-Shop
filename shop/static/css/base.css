@@ -192,10 +192,14 @@ ul.errorlist {
     width: 96%;
     margin-right:-220px;
     overflow:hidden;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
 }
 
 .product-list .item {
-    width:25%;
+    width:70%;
     padding:10px 20px 10px 0;
     float:left;
     text-align:center;
@@ -206,6 +210,11 @@ ul.errorlist {
     width:100%;
     height: 260px;
     margin-bottom:8px;
+}
+
+div.caption {
+    float: left;
+    clear: both;
 }
 
 .product-detail {
@@ -300,9 +309,15 @@ ul.errorlist {
     float:left;
 }
 
+.product-detail .recommendations .item {
+    width: 300px;
+    text-align: center;    
+}
+
 .recommendations img {
     width:200px;
-    height:200px
+    height:200px;
+    padding-left: 55px;
 }
 
 .recommendations p {
@@ -321,10 +336,14 @@ ul.errorlist {
 
 .recommendations.cart .item {
     margin-right:10px;
+    width: 250px;
+    text-align: center;
 }
 
 .recommendations.cart img {
-    width:120px;
+    width:100px;
+    padding-right: 50px;
+    height: 100px;
 }
 
 /* braintree hosted fields */
